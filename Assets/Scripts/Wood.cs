@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Wood : MonoBehaviour
@@ -7,6 +6,6 @@ public class Wood : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Rotate(0,0, _rotationSpeed);
+        transform.Rotate(Vector3.forward, _rotationSpeed);
     }
 }
