@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63a67715b60989246971655e54210842
+guid: e9dada2b38b581042a30325ad847d199
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,8 +47,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
-  spriteBorder: {x: 22, y: 158, z: 24, w: 155}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -140,22 +140,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knife_0
+      name: Target 1_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 147
-        width: 960
-        height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 31
+        y: 35
+        width: 539
+        height: 240
+      alignment: 9
+      pivot: {x: 0.49837515, y: 0.59851956}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e9c672bc02c6a246a270d75c5d3fefc
-      internalID: 1709286478
+      spriteID: 2f15bd2513d12a94b8121ba029f42fee
+      internalID: -1184631498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Target 1_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 276
+        width: 331
+        height: 289
+      alignment: 9
+      pivot: {x: 0.3756513, y: 0.42727482}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b455b3f9dc2a746afd25d89124556b
+      internalID: 1507453741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Target 1_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 275
+        width: 205
+        height: 281
+      alignment: 9
+      pivot: {x: 0.6110682, y: 0.38468993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac424a35e2570f143bac3b2d3759f9bd
+      internalID: 1305028464
       vertices: []
       indices: 
       edges: []
@@ -164,14 +206,16 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Knife_0: 1709286478
+      Target 1_2: 1305028464
+      Target 1_0: -1184631498
+      Target 1_1: 1507453741
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

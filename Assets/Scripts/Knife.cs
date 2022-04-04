@@ -35,8 +35,9 @@ public class Knife : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Knife>() != null)
         {
-            _rigidbody2D.gravityScale = 0.5f;
             Debug.Log("lose");
+            _rigidbody2D.AddForce(Vector2.down * 500);
+            _rigidbody2D.AddTorque(500);
         }
     }
 }
