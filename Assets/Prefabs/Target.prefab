@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 2
+  _durability: 3
 --- !u!58 &598502135123070867
 CircleCollider2D:
   m_ObjectHideFlags: 0

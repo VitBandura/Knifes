@@ -31,7 +31,7 @@ public class Target : MonoBehaviour
         _durability--;
         if (_durability <= 0)
         {
-            DestroyTarget();
+            EventStreams.GameEvents.Publish(new TargetDestroyedEvent());
             return;
         }
         StartCoroutine(ShakeTarget());
@@ -44,10 +44,6 @@ public class Target : MonoBehaviour
         transform.position -= _shakingOffset;
     }
 
-    private void DestroyTarget()
-    {
-        
-    }
     
     private void OnDestroy()
     {
