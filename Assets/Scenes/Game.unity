@@ -314,11 +314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 26927395295323692, guid: 2edc93e7d8faba7428861d930a87b471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.32
+      value: -2.55
       objectReference: {fileID: 0}
     - target: {fileID: 26927395295323692, guid: 2edc93e7d8faba7428861d930a87b471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 26927395295323692, guid: 2edc93e7d8faba7428861d930a87b471, type: 3}
       propertyPath: m_LocalPosition.z
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knifePool: {fileID: 2129405877}
-  _knifeSpeed: 30
+  _knifeSpeed: 25
 --- !u!4 &628091502
 Transform:
   m_ObjectHideFlags: 0
@@ -397,13 +397,39 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628091500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1084419040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224467667322340803, guid: 234bc47b18151c84da12ba7fa9c556b3, type: 3}
+  m_PrefabInstance: {fileID: 8224467668295145108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1084419045
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084419040}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1145286472
 GameObject:
   m_ObjectHideFlags: 0

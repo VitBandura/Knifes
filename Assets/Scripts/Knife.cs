@@ -17,7 +17,7 @@ public class Knife : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Wood>() != null)
+        if (other.GetComponent<Target>() != null)
         {
             GetStuckInTarget(other);
             EventStreams.GameEvents.Publish(new KnifeGetsIntoTargetEvent(gameObject));

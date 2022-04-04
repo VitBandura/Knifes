@@ -3,12 +3,13 @@ using Events;
 using SimpleEventBus.Disposables;
 using UnityEngine;
 
-public class Wood : MonoBehaviour
+public class Target : MonoBehaviour
 {
-    private const float ShakingDuration = 0.05f;
+    private const float SHAKING_DURATION = 0.05f;
     private readonly Vector3 _shakingOffset = new (0, 0.08f);
     
     [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _durability;
 
     private CompositeDisposable _subscriptions;
     
@@ -16,27 +17,38 @@ public class Wood : MonoBehaviour
     {
         _subscriptions = new CompositeDisposable
         {
-            EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(ShakeTarget)
+            EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(HandleKnifeHit),
         };
     }
-
-    private void ShakeTarget(KnifeGetsIntoTargetEvent obj)
-    {
-        StartCoroutine(Shake());
-    }
-
+    
     private void FixedUpdate()
     {
         transform.Rotate(Vector3.forward, _rotationSpeed);
     }
 
-    private IEnumerator Shake()
+    private void HandleKnifeHit(KnifeGetsIntoTargetEvent obj)
+    {
+        _durability--;
+        if (_durability <= 0)
+        {
+            DestroyTarget();
+            return;
+        }
+        StartCoroutine(ShakeTarget());
+    }
+    
+    private IEnumerator ShakeTarget()
     {
         transform.position += _shakingOffset;
-        yield return new WaitForSeconds(ShakingDuration);
+        yield return new WaitForSeconds(SHAKING_DURATION);
         transform.position -= _shakingOffset;
     }
 
+    private void DestroyTarget()
+    {
+        
+    }
+    
     private void OnDestroy()
     {
         _subscriptions.Dispose();
