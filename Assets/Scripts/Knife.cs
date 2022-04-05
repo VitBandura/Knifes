@@ -15,6 +15,7 @@ public class Knife : MonoBehaviour
         _rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Target>() != null)
@@ -23,6 +24,7 @@ public class Knife : MonoBehaviour
             EventStreams.GameEvents.Publish(new KnifeGetsIntoTargetEvent(gameObject));
         }
     }
+    */
 
     private void GetStuckInTarget(Collider2D other)
     {
