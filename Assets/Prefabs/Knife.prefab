@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8107397063647732051}
   - component: {fileID: 5386980694551070071}
   - component: {fileID: -2373935805250341954}
-  - component: {fileID: 6958912462756066420}
+  - component: {fileID: 6944179413020315780}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda6738bdac9dcb41850042913889648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &6958912462756066420
-PolygonCollider2D:
+--- !u!61 &6944179413020315780
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,9 +143,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.31600255, y: -0.031647928}
-      - {x: -0.3131969, y: 0.08180327}
-      - {x: 1.0172808, y: 0.14937057}
-      - {x: 1.0137601, y: -0.16403767}
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 2}
+  m_EdgeRadius: 0
