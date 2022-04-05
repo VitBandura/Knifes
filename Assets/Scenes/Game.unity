@@ -769,6 +769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood
       objectReference: {fileID: 0}
+    - target: {fileID: 6980977352181210050, guid: e575e4da10802ca44b26b1990337c1fb, type: 3}
+      propertyPath: _harmParticles
+      value: 
+      objectReference: {fileID: 1937058765339342012, guid: 5faa5778fb522384f9997f144a0037d2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e575e4da10802ca44b26b1990337c1fb, type: 3}
 --- !u!1 &2085834430
@@ -782,6 +786,7 @@ GameObject:
   - component: {fileID: 2085834431}
   - component: {fileID: 2085834433}
   - component: {fileID: 2085834432}
+  - component: {fileID: 2085834434}
   m_Layer: 5
   m_Name: KnifeCounter
   m_TagString: Untagged
@@ -843,6 +848,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085834430}
   m_CullTransparentMesh: 1
+--- !u!114 &2085834434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085834430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc3f2bbc7466044eb78cb7d7b660c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knifeIcon: {fileID: 4479484372723978349, guid: a399196ff9ed6c14b9ad50b4bcf7bf00, type: 3}
+  _knifeCount: 12
+  _usedKnifeIconColor: {r: 0, g: 0, b: 0, a: 0.50980395}
 --- !u!1 &2129405876
 GameObject:
   m_ObjectHideFlags: 0
