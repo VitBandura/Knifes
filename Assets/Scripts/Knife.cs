@@ -39,8 +39,10 @@ public class Knife : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Knife>() != null)
         {
+            //TODO add variable
             Debug.Log("lose");
-            _rigidbody2D.AddForce(Vector2.down * 50);
+            _rigidbody2D.velocity = Vector2.down * 2;
+            _rigidbody2D.angularVelocity = 360f * 5;
         }
     }
 }

@@ -47,6 +47,8 @@ public class KnifeThrower : MonoBehaviour
     {
         if (IsReadyForThrowing)
         {
+            EventStreams.GameEvents.Publish(new KnifeWasThrownEvent());
+            
             _knifeRigidBody2D.velocity = Vector2.up * _knifeSpeed;
             _knifeRigidBody2D.gravityScale = 1;
         }
