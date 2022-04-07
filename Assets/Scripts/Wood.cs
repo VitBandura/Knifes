@@ -6,12 +6,23 @@ using UnityEngine;
 public class Wood : MonoBehaviour
 {
     [SerializeField] private float _durability;
-    [SerializeField] private ParticleSystem _harmParticles;
-    
+    [SerializeField] private ParticleSystem _particlePrefab;
+
+    private ParticleSystem _particlesOfHarming;
     private CompositeDisposable _subscriptions;
+    private CircleCollider2D _circleCollider2D;
+    private Vector3 _particlesPosition;
+    private Vector3 _particlesPositionOffset;
 
     private void Awake()
     {
+        _circleCollider2D = GetComponent<CircleCollider2D>();
+        
+        _particlesPositionOffset = new Vector3(0, _circleCollider2D.radius, 0);
+        _particlesPosition = transform.position - _particlesPositionOffset;
+        
+        _particlesOfHarming = Instantiate(_particlePrefab);
+        _particlesOfHarming.transform.position = _particlesPosition;
         
         _subscriptions = new CompositeDisposable
         {
@@ -21,7 +32,8 @@ public class Wood : MonoBehaviour
 
     private void HandleKnifeHit(KnifeGetsIntoTargetEvent obj)
     {
-        Instantiate(_harmParticles, transform.position, quaternion.identity);
+        _particlesOfHarming.transform.position = transform.position;
+        _particlesOfHarming.Play();
     }
 
     private void OnDestroy()

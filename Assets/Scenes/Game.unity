@@ -773,6 +773,10 @@ PrefabInstance:
       propertyPath: _harmParticles
       value: 
       objectReference: {fileID: 1937058765339342012, guid: 5faa5778fb522384f9997f144a0037d2, type: 3}
+    - target: {fileID: 6980977352181210050, guid: e575e4da10802ca44b26b1990337c1fb, type: 3}
+      propertyPath: _particlePrefab
+      value: 
+      objectReference: {fileID: 1937058765339342012, guid: 5faa5778fb522384f9997f144a0037d2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e575e4da10802ca44b26b1990337c1fb, type: 3}
 --- !u!1 &2085834430
