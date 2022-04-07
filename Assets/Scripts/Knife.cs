@@ -43,6 +43,8 @@ public class Knife : MonoBehaviour
             Debug.Log("lose");
             _rigidbody2D.velocity = Vector2.down * 2;
             _rigidbody2D.angularVelocity = 360f * 5;
+            
+            EventStreams.GameEvents.Publish(new GameOverEvent());
         }
     }
 }
