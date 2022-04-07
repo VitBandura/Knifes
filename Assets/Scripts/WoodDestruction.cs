@@ -11,6 +11,11 @@ public class WoodDestruction : MonoBehaviour
         SavePartsStartPositions();
     }
 
+    private void OnEnable()
+    {
+        ExplodeTargetParts();
+    }
+
     private void GetAllPartsOfDestroyedTarget()
     {
         _partsOfTarget = GetComponentsInChildren<Rigidbody2D>();
@@ -37,10 +42,11 @@ public class WoodDestruction : MonoBehaviour
     //TODO introduce variables and add random
     private void ExplodeTargetParts()
     {
+        GetAllPartsOfDestroyedTarget();
         foreach (var part in _partsOfTarget)
         {
-            part.AddForce(Vector2.up * 500);
-            part.AddTorque(500);
+            part.AddForce(Vector2.up * 200);
+            part.AddTorque(200);
         }
     }
 }

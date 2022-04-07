@@ -8,8 +8,9 @@ public class Wood : MonoBehaviour
     [SerializeField] private float _durability;
     [SerializeField] private ParticleSystem _particlePrefab;
 
-    private ParticleSystem _particlesOfHarming;
+    
     private CompositeDisposable _subscriptions;
+    private ParticleSystem _particlesOfHarming;
     private CircleCollider2D _circleCollider2D;
     private Vector3 _particlesPosition;
     private Vector3 _particlesPositionOffset;
@@ -34,6 +35,11 @@ public class Wood : MonoBehaviour
     {
         _particlesOfHarming.transform.position = transform.position;
         _particlesOfHarming.Play();
+        _durability--;
+        if (_durability <= 0)
+        {
+            EventStreams.GameEvents.Publish(new TargetDestroyedEvent());
+        }
     }
 
     private void OnDestroy()
