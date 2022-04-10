@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class WoodRotation : MonoBehaviour
+public class WoodRotator : MonoBehaviour
 {
     private WheelJoint2D _wheelJoint2D;
     private JointMotor2D _jointMotor2D;
@@ -10,10 +10,14 @@ public class WoodRotation : MonoBehaviour
 
     private void Awake()
     {
+        InitializeWheelJointComponent();
+        StartCoroutine(RotateInMixedMode());
+    }
+
+    private void InitializeWheelJointComponent()
+    {
         _wheelJoint2D = GetComponent<WheelJoint2D>();
         _jointMotor2D = _wheelJoint2D.motor;
-
-        StartCoroutine(RotateInMixedMode());
     }
 
     private IEnumerator RotateInMixedMode()
@@ -22,10 +26,10 @@ public class WoodRotation : MonoBehaviour
         var unitIndexMax = _rotationModes.Length - 1;
         while (true)
         {
-            _jointMotor2D.motorSpeed = _rotationModes[unitIndex].speed;
+            _jointMotor2D.motorSpeed = _rotationModes[unitIndex].Speed;
             _wheelJoint2D.motor = _jointMotor2D;
 
-            yield return new WaitForSeconds(_rotationModes[unitIndex].duration);
+            yield return new WaitForSeconds(_rotationModes[unitIndex].Duration);
 
             if (unitIndex < unitIndexMax)
             {

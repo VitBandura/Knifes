@@ -7,6 +7,7 @@ public class Knife : MonoBehaviour
     private BoxCollider2D _boxCollider2D;
     private Vector2 _stuckKnifeColliderSize;
     private Vector2 _stuckKnifeColliderOffset;
+    private bool _isAlreadyStuck;
 
     private void Awake()
     {
@@ -25,19 +26,9 @@ public class Knife : MonoBehaviour
         }
     }
    
-
-    private void GetStuckInTarget(Collider2D other)
-    {
-        _rigidbody2D.velocity = Vector2.zero;
-        transform.parent = other.transform;
-        _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-        _boxCollider2D.size = _stuckKnifeColliderSize;
-        _boxCollider2D.offset = _stuckKnifeColliderOffset;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Knife>() != null)
+        if (collision.gameObject.GetComponent<Knife>() != null && !_isAlreadyStuck)
         {
             //TODO add variable
             Debug.Log("lose");
@@ -46,5 +37,15 @@ public class Knife : MonoBehaviour
             
             EventStreams.GameEvents.Publish(new GameOverEvent());
         }
+    }
+    
+    private void GetStuckInTarget(Collider2D other)
+    {
+        _isAlreadyStuck = true;
+        _rigidbody2D.velocity = Vector2.zero;
+        transform.parent = other.transform;
+        _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        _boxCollider2D.size = _stuckKnifeColliderSize;
+        _boxCollider2D.offset = _stuckKnifeColliderOffset;
     }
 }

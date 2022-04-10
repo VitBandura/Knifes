@@ -1010,6 +1010,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodRotator
       objectReference: {fileID: 0}
+    - target: {fileID: 2454618605914613530, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[0]._speed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454618605914613530, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[1]._speed
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454618605914613530, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[2]._speed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454618605914613530, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[0]._duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454618605914613530, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[1]._duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454618605914613530, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[2]._duration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3548813103220362837, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
       propertyPath: m_RootOrder
       value: 8
