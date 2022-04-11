@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     private int _woodDurability;
     private int _knifeCountUI;
 
-    private void Awake()
+    private void Start()
     {
         GenerateLevelGeneralValue();
     }
@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
         _randomLevelGeneralValue = Random.Range(MIN_LEVEL_GENERAL_VALUE, MAX_LEVEL_GENERAL_VALUE);
         _woodDurability = _randomLevelGeneralValue;
         _knifeCountUI = _randomLevelGeneralValue;
-        
+
         EventStreams.GameEvents.Publish(new GameStartedEvent(_woodDurability, _knifeCountUI));
     }
 }

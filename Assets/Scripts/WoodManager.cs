@@ -13,10 +13,7 @@ public class WoodManager : MonoBehaviour
     private CompositeDisposable _subscriptions;
     private void Awake()
     {
-        _subscriptions = new CompositeDisposable
-        {
-            EventStreams.GameEvents.Subscribe<TargetDestroyedEvent>(HandleWoodDestruction)
-        };
+        InitializeSubscriptions();
 
         _position = transform.position;
         
@@ -25,6 +22,14 @@ public class WoodManager : MonoBehaviour
         _woodDestroyed.SetActive(false);
         
         _woodRotator.SetActive(true);
+    }
+
+    private void InitializeSubscriptions()
+    {
+        _subscriptions = new CompositeDisposable
+        {
+            EventStreams.GameEvents.Subscribe<TargetDestroyedEvent>(HandleWoodDestruction)
+        };
     }
 
     private void HandleWoodDestruction(TargetDestroyedEvent obj)

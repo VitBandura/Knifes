@@ -929,7 +929,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knifeIcon: {fileID: 4479484372723978349, guid: a399196ff9ed6c14b9ad50b4bcf7bf00, type: 3}
-  _knifeCount: 12
   _usedKnifeIconColor: {r: 0, g: 0, b: 0, a: 0.50980395}
 --- !u!114 &2129405877 stripped
 MonoBehaviour:
@@ -1080,6 +1079,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+--- !u!1001 &3771683982472659551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976473, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771683981922976475, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3771683981922976475, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
+      propertyPath: m_Name
+      value: GameController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
 --- !u!1001 &4326545066055911535
 PrefabInstance:
   m_ObjectHideFlags: 0

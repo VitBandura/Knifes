@@ -6,17 +6,29 @@ using UnityEngine.UI;
 public class KnifeCounterUI : MonoBehaviour
 {
     [SerializeField] private GameObject _knifeIcon;
-    [SerializeField] private float _knifeCount;
     [SerializeField] private Color _usedKnifeIconColor;
 
     private CompositeDisposable _subscriptions;
+    private int _knifeCount;
     private int _knifeIconIndex;
+    
     private void Awake()
+    {
+        InitializeSubscriptions();
+    }
+
+    private void InitializeSubscriptions()
     {
         _subscriptions = new CompositeDisposable
         {
+            EventStreams.GameEvents.Subscribe<GameStartedEvent>(InitializeKnifeCounterBar),
             EventStreams.GameEvents.Subscribe<KnifeWasThrownEvent>(ReduceKnifeCount)
         };
+    }
+
+    private void InitializeKnifeCounterBar(GameStartedEvent eventData)
+    {
+        _knifeCount = eventData.KnifeCountUI;
         
         for (var i = 0; i < _knifeCount; i++)
         {
@@ -24,7 +36,7 @@ public class KnifeCounterUI : MonoBehaviour
         }
     }
 
-    private void ReduceKnifeCount(KnifeWasThrownEvent obj)
+    private void ReduceKnifeCount(KnifeWasThrownEvent eventData)
     {
         transform.GetChild(_knifeIconIndex).GetComponent<Image>().color = _usedKnifeIconColor;
         _knifeIconIndex++;

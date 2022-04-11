@@ -1,14 +1,12 @@
 using Events;
 using SimpleEventBus.Disposables;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Wood : MonoBehaviour
 {
-    [SerializeField] private float _durability;
     [SerializeField] private ParticleSystem _particlePrefab;
 
-    
+    private float _durability;
     private CompositeDisposable _subscriptions;
     private ParticleSystem _particlesOfHarming;
     private CircleCollider2D _circleCollider2D;
@@ -25,13 +23,24 @@ public class Wood : MonoBehaviour
         _particlesOfHarming = Instantiate(_particlePrefab);
         _particlesOfHarming.transform.position = _particlesPosition;
         
+        InitializeSubscriptions();
+    }
+
+    private void InitializeSubscriptions()
+    {
         _subscriptions = new CompositeDisposable
         {
+            EventStreams.GameEvents.Subscribe<GameStartedEvent>(GetDurabilityValue),
             EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(HandleKnifeHit)
         };
     }
 
-    private void HandleKnifeHit(KnifeGetsIntoTargetEvent obj)
+    private void GetDurabilityValue(GameStartedEvent eventData)
+    {
+        _durability = eventData.WoodDurability;
+    }
+
+    private void HandleKnifeHit(KnifeGetsIntoTargetEvent eventData)
     {
         _particlesOfHarming.transform.position = transform.position;
         _particlesOfHarming.Play();

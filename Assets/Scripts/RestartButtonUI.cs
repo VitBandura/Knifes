@@ -15,6 +15,11 @@ public class RestartButtonUI : MonoBehaviour
         _button.gameObject.SetActive(false);
        
       
+        InitializeSubscriptions();
+    }
+
+    private void InitializeSubscriptions()
+    {
         _subscriptions = new CompositeDisposable
         {
             EventStreams.GameEvents.Subscribe<TargetDestroyedEvent>(ShowButton),
@@ -23,12 +28,12 @@ public class RestartButtonUI : MonoBehaviour
     }
 
     //TODO rework show button methods
-    private void ShowButton(GameOverEvent obj)
+    private void ShowButton(GameOverEvent eventData)
     {
         _button.gameObject.SetActive(true);
     }
 
-    private void ShowButton(TargetDestroyedEvent obj)
+    private void ShowButton(TargetDestroyedEvent eventData)
     {
        _button.gameObject.SetActive(true);
     }
