@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wood : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particlePrefab;
-
+    
     private float _durability;
     private CompositeDisposable _subscriptions;
     private ParticleSystem _particlesOfHarming;
