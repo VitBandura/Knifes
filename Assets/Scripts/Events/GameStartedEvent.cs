@@ -1,12 +1,11 @@
 using SimpleEventBus.Events;
-using UnityEngine;
 
 namespace Events
 {
     public class GameStartedEvent : EventBase
     {
-        public int WoodDurability;
-        public int KnifeCountUI;
+        public int WoodDurability { get; }
+        public int KnifeCountUI { get; }
 
         public GameStartedEvent(int woodDurability, int knifeCountUI)
         {
