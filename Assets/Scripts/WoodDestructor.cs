@@ -1,3 +1,5 @@
+using Events;
+using SimpleEventBus.Disposables;
 using UnityEngine;
 
 public class WoodDestructor : MonoBehaviour
@@ -8,20 +10,25 @@ public class WoodDestructor : MonoBehaviour
     private const float MIN_DESTROYED_PART_TORQUE = -200;
     
     private Rigidbody2D[] _partsOfTarget;
-
+    private CompositeDisposable _subscriptions;
+    
     private void Awake()
     {
-        GetAllPartsOfDestroyedTarget();
+        gameObject.SetActive(false);
+        _subscriptions = new CompositeDisposable
+        {
+            EventStreams.GameEvents.Subscribe<TargetDestroyedEvent>(HandleWoodDestruction)
+        };
     }
-
+    
     private void OnEnable()
     {
         ExplodeTargetParts();
     }
 
-    private void GetAllPartsOfDestroyedTarget()
+   private void HandleWoodDestruction(TargetDestroyedEvent eventData)
     {
-        _partsOfTarget = GetComponentsInChildren<Rigidbody2D>();
+        gameObject.SetActive(true);
     }
 
    private void ExplodeTargetParts()
@@ -36,4 +43,15 @@ public class WoodDestructor : MonoBehaviour
             part.AddTorque(destroyedPartTorque);
         }
     }
+   
+   private void GetAllPartsOfDestroyedTarget()
+   {
+       _partsOfTarget = GetComponentsInChildren<Rigidbody2D>();
+   }
+
+   
+   private void OnDestroy()
+   {
+       _subscriptions.Dispose();
+   }
 }

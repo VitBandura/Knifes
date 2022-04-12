@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wood : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particlePrefab;
+    [SerializeField] private GameObject _destroyedWood;
     
     private float _durability;
     private CompositeDisposable _subscriptions;
@@ -47,6 +48,13 @@ public class Wood : MonoBehaviour
         _durability--;
         if (_durability <= 0)
         {
+            var stuckKnives = GetComponentsInChildren<Transform>();
+            for (var i = 1; i < stuckKnives.Length; i++)
+            {
+                stuckKnives[i].parent = _destroyedWood.transform;
+                stuckKnives[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            }
+            gameObject.SetActive(false);
             EventStreams.GameEvents.Publish(new TargetDestroyedEvent());
         }
     }

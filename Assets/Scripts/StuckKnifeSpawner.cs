@@ -12,11 +12,12 @@ public class StuckKnifeSpawner : MonoBehaviour
 
     private void Awake()
     {
-        _subscriptions = new CompositeDisposable
+       _subscriptions = new CompositeDisposable
         {
             EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(SpawnStuckKnife)
         };
 
+       //TODO rework this 
         _spawnPoint = new Vector3(_parent.transform.position.x, 
             _parent.transform.position.y - _parent.GetComponent<CircleCollider2D>().radius);
     }

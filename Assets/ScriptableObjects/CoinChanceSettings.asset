@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa955480da034b1eb857b78561ae92ea, type: 3}
   m_Name: CoinChanceSettings
   m_EditorClassIdentifier: 
-  _chance: 0.25
+  _chance: 25
