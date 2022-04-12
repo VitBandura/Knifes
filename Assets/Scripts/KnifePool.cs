@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Events;
+using SimpleEventBus.Disposables;
 using UnityEngine;
 
 public class KnifePool : MonoBehaviour
@@ -7,11 +9,17 @@ public class KnifePool : MonoBehaviour
    [SerializeField] private float _poolSize;
 
    private Queue<GameObject> _knifePool;
+   private CompositeDisposable _subscriptions; 
+      
    private void Awake()
    {
       InitializePool();
+      _subscriptions = new CompositeDisposable
+      {
+         EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(ReleaseKnife)
+      };
    }
-   
+
    private void InitializePool()
    {
       _knifePool = new Queue<GameObject>();
@@ -40,6 +48,12 @@ public class KnifePool : MonoBehaviour
          FillPoolWithNewKnives();
       }
       return _knifePool.Dequeue();
+   }
+   
+   private void ReleaseKnife(KnifeGetsIntoTargetEvent eventData)
+   {
+      eventData.Knife.SetActive(false);
+      _knifePool.Enqueue(eventData.Knife);
    }
     /*
    private void ReturnBombIntoPool(BombDetonationEvent eventData)
