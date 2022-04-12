@@ -45,7 +45,7 @@ public class Knife : MonoBehaviour
         _rigidbody2D.velocity = Vector2.zero;
         transform.parent = other.transform;
         _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-        _boxCollider2D.size = _stuckKnifeColliderSize;
-        _boxCollider2D.offset = _stuckKnifeColliderOffset;
+        //_boxCollider2D.size = _stuckKnifeColliderSize;
+        //_boxCollider2D.offset = _stuckKnifeColliderOffset;
     }
 }

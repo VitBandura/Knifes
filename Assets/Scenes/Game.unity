@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinPrefab: {fileID: 1058294328790928973, guid: 083dc9a0c61e21a44bfc44b522030fd6, type: 3}
-  _positionsCount: 8
-  _radius: 8
+  _positionsCount: 4
+  _radius: 2
 --- !u!4 &25607593
 Transform:
   m_ObjectHideFlags: 0
