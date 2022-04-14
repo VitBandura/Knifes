@@ -13,7 +13,12 @@ public class KnifePool : MonoBehaviour
       
    private void Awake()
    {
+      InitializeSubscriptions();
       InitializePool();
+   }
+
+   private void InitializeSubscriptions()
+   {
       _subscriptions = new CompositeDisposable
       {
          EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(ReleaseKnife)
@@ -30,9 +35,9 @@ public class KnifePool : MonoBehaviour
    {
       for (var i = 0; i < _poolSize; i++)
       {
-         var prefab = Instantiate(_knifePrefab);
-         prefab.SetActive(false);
-         _knifePool.Enqueue(prefab);
+         var knife = Instantiate(_knifePrefab);
+         knife.SetActive(false);
+         _knifePool.Enqueue(knife);
       }
    }
 
@@ -55,11 +60,9 @@ public class KnifePool : MonoBehaviour
       eventData.Knife.SetActive(false);
       _knifePool.Enqueue(eventData.Knife);
    }
-    /*
-   private void ReturnBombIntoPool(BombDetonationEvent eventData)
+
+   private void OnDestroy()
    {
-      eventData.Bomb.SetActive(false);
-      _bombPool.Enqueue(eventData.Bomb);
+      _subscriptions.Dispose();
    }
-   */
 }

@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
+    private const int FULL_DEGREE_ANGLE = 360;
+
+    [SerializeField] private float _tossAwaySpeed;
+    [SerializeField] private float _tossAwayRotation;
+    
     private Rigidbody2D _rigidbody2D;
+    private bool _isTossedAway;
 
     private void Awake()
     {
@@ -12,23 +18,25 @@ public class Knife : MonoBehaviour
 
    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Wood>() != null)
-        {
-            EventStreams.GameEvents.Publish(new KnifeGetsIntoTargetEvent(gameObject));
-        }
+      if (other.CompareTag("StuckKnife") && !_isTossedAway)
+      {
+          var tossingVelocity = Vector2.down * _tossAwaySpeed;
+          var tossingRotation = FULL_DEGREE_ANGLE * _tossAwayRotation;
+          
+          _rigidbody2D.velocity = tossingVelocity;
+          _rigidbody2D.angularVelocity = tossingRotation;
+          _isTossedAway = true;
+          
+          Debug.Log("loss");
+          EventStreams.GameEvents.Publish(new GameOverEvent());
+      }
     }
-   
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Knife>() != null)
-        {
-            //TODO add variable
-            Debug.Log("lose");
-            _rigidbody2D.velocity = Vector2.down * 2;
-            _rigidbody2D.angularVelocity = 360f * 5;
-            
-            EventStreams.GameEvents.Publish(new GameOverEvent());
-        }
-    }
-    
+
+   private void OnTriggerStay2D(Collider2D other)
+   {
+       if (other.GetComponent<Wood>() != null && !_isTossedAway)
+       {
+           EventStreams.GameEvents.Publish(new KnifeGetsIntoTargetEvent(gameObject));
+       }
+   }
 }

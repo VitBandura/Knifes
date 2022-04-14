@@ -1,3 +1,4 @@
+using System.Collections;
 using Events;
 using SimpleEventBus.Disposables;
 using UnityEngine;
@@ -6,8 +7,8 @@ public class KnifeThrower : MonoBehaviour
 {
     [SerializeField] private KnifePool _knifePool;
     [SerializeField] private float _knifeSpeed;
-
-    private GameObject _knife;
+    [SerializeField] private float _delayTime;
+    
     private Rigidbody2D _knifeRigidBody2D;
     private CompositeDisposable _subscriptions;
     private bool _isReadyForThrowing;
@@ -37,10 +38,12 @@ public class KnifeThrower : MonoBehaviour
     }
     private void PrepareKnife()
     {
-        _knife = _knifePool.TakeKnifeFromPool();
-        _knifeRigidBody2D = _knife.GetComponent<Rigidbody2D>();
-        _knife.transform.position = transform.position;
-        _knife.SetActive(true);
+        var knife = _knifePool.TakeKnifeFromPool();
+        var throwingPosition = transform.position;
+        
+        _knifeRigidBody2D = knife.GetComponent<Rigidbody2D>();
+        knife.transform.position = throwingPosition;
+        knife.SetActive(true);
         _isReadyForThrowing = true;
     }
     
@@ -48,7 +51,8 @@ public class KnifeThrower : MonoBehaviour
     {
         if (_isReadyForThrowing)
         {
-            _knifeRigidBody2D.velocity = Vector2.up * _knifeSpeed;
+            var throwingVelocity = Vector2.up * _knifeSpeed;
+            _knifeRigidBody2D.velocity = throwingVelocity;
             _isReadyForThrowing = false;
             
             EventStreams.GameEvents.Publish(new KnifeWasThrownEvent());
@@ -59,8 +63,14 @@ public class KnifeThrower : MonoBehaviour
     {
         if (!_isTargetDestroyed)
         {
-            PrepareKnife();
+            StartCoroutine(PrepareKnifeAfterDelay());
         }
+    }
+
+    private IEnumerator PrepareKnifeAfterDelay()
+    {
+        yield return new WaitForSeconds(_delayTime);
+        PrepareKnife();
     }
     
     private void HandleTargetDestruction(TargetDestroyedEvent eventData)

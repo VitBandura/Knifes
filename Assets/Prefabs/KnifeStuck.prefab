@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6321909504599380016}
   m_Layer: 0
   m_Name: KnifeStuck
-  m_TagString: Untagged
+  m_TagString: StuckKnife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0055722, y: 0.39999998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38666666, y: 1.62}
+  m_Size: {x: 0.2195003, y: 0.81760097}
   m_EdgeRadius: 0
 --- !u!50 &-6321909504599380016
 Rigidbody2D:
