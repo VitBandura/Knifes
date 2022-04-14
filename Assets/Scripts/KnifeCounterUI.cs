@@ -21,12 +21,12 @@ public class KnifeCounterUI : MonoBehaviour
     {
         _subscriptions = new CompositeDisposable
         {
-            EventStreams.GameEvents.Subscribe<GameStartedEvent>(InitializeKnifeCounterBar),
+            EventStreams.GameEvents.Subscribe<RandomizerGeneratedValuesEvent>(InitializeKnifeCounterBar),
             EventStreams.GameEvents.Subscribe<KnifeWasThrownEvent>(ReduceKnifeCount)
         };
     }
 
-    private void InitializeKnifeCounterBar(GameStartedEvent eventData)
+    private void InitializeKnifeCounterBar(RandomizerGeneratedValuesEvent eventData)
     {
         _knifeCount = eventData.KnifeCountUI;
         

@@ -31,12 +31,12 @@ public class Wood : MonoBehaviour
     {
         _subscriptions = new CompositeDisposable
         {
-            EventStreams.GameEvents.Subscribe<GameStartedEvent>(GetDurabilityValue),
+            EventStreams.GameEvents.Subscribe<RandomizerGeneratedValuesEvent>(GetDurabilityValue),
             EventStreams.GameEvents.Subscribe<KnifeGetsIntoTargetEvent>(HandleKnifeHit)
         };
     }
 
-    private void GetDurabilityValue(GameStartedEvent eventData)
+    private void GetDurabilityValue(RandomizerGeneratedValuesEvent eventData)
     {
         _durability = eventData.WoodDurability;
     }
