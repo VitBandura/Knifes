@@ -4,16 +4,16 @@ using UnityEngine;
     {
         public float Cos => _cos;
         public float Sin => _sin;
-        public Quaternion Rotation => _rotation;
+        public float Angle => _angle;
     
         private readonly float _cos;
         private readonly float _sin;
-        private readonly Quaternion _rotation;
+        private readonly float _angle;
     
-        public AngularUnit(float cos, float sin, Quaternion rotation)
+        public AngularUnit(float cos, float sin, float angle)
         {
             _cos = cos;
             _sin = sin;
-            _rotation = rotation;
+            _angle = angle;
         }
     }

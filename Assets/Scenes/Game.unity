@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 25607593}
+  - component: {fileID: 25607594}
   m_Layer: 0
   m_Name: KnifeInWoodSpawner
   m_TagString: Untagged
@@ -154,6 +155,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &25607594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25607591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee77611f5f1ccdf44b125a1e8f673f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knifeStuckPrefab: {fileID: 4609862212429208698, guid: 5d22a6f87b3d4424486d02129c1599a6, type: 3}
+  _parent: {fileID: 457684550}
 --- !u!1 &261168245
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97a09665cf46d44eb26e8180fbe7246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stuckKnifePrefab: {fileID: 4609862212429208698, guid: 5d22a6f87b3d4424486d02129c1599a6, type: 3}
+  _knifeStuckPrefab: {fileID: 4609862212429208698, guid: 5d22a6f87b3d4424486d02129c1599a6, type: 3}
   _parent: {fileID: 457684550}
 --- !u!4 &1146329398
 Transform:
@@ -888,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8485944626235697237, guid: 827cc5582777c0f4a955af91cb9e4666, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8485944626235697237, guid: 827cc5582777c0f4a955af91cb9e4666, type: 3}
       propertyPath: m_LocalPosition.z
@@ -924,6 +939,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 827cc5582777c0f4a955af91cb9e4666, type: 3}
+--- !u!1 &1495529037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1495529039}
+  - component: {fileID: 1495529038}
+  m_Layer: 0
+  m_Name: AngularSettingsProvider
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1495529038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495529037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9695abb8f5f4f7e928de53950038c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _positionsCount: 20
+--- !u!4 &1495529039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495529037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.78, y: -2.07, z: -0.05326568}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1962211000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2470587588558535196, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2470587588558535196, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1335,6 +1395,10 @@ PrefabInstance:
       propertyPath: _knifePool
       value: 
       objectReference: {fileID: 2129405877}
+    - target: {fileID: 4326545066535723522, guid: 6d12a95075c96bd49900cc4e4d835800, type: 3}
+      propertyPath: _knifeSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4326545066535723523, guid: 6d12a95075c96bd49900cc4e4d835800, type: 3}
       propertyPath: m_Name
       value: KnifeThrower

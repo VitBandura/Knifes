@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StuckKnifeSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _stuckKnifePrefab;
+    [SerializeField] private GameObject _knifeStuckPrefab;
     [SerializeField] private Transform _parent;
 
     private Vector3 _spawnPoint;
@@ -24,7 +24,7 @@ public class StuckKnifeSpawner : MonoBehaviour
 
     private void SpawnStuckKnife(KnifeGetsIntoTargetEvent eventData)
     {
-        Instantiate(_stuckKnifePrefab, _spawnPoint, Quaternion.identity, _parent);
+        Instantiate(_knifeStuckPrefab, _spawnPoint, Quaternion.identity, _parent);
     }
 
     private void OnDestroy()

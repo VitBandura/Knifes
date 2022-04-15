@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Events;
 using SimpleEventBus.Disposables;
@@ -7,30 +8,21 @@ public class AngularSettingsProvider : MonoBehaviour
 {
     private const int FULL_DEGREE_ANGLE = 360;
    
+    [SerializeField] private int _positionsCount;
+    
     private CompositeDisposable _subscriptions;
-    private int _positionsCount;
-  
+    
     private float _angularStepInDeg;
     private float _angularStepInRad;
     private List<AngularUnit> _angularSettings = new();
    
-    private void Awake()
+    private void Start()
     {
-        InitializeSubscriptions();
+        SetAngularSettings();
     }
-    
-    private void InitializeSubscriptions()
+   
+    private void SetAngularSettings()
     {
-        _subscriptions = new CompositeDisposable
-        {
-            EventStreams.GameEvents.Subscribe<RandomizerGeneratedValuesEvent>(SetAngularSettings)
-        };
-    }
-
-    private void SetAngularSettings(RandomizerGeneratedValuesEvent eventData)
-    {
-        _positionsCount = eventData.CircularSpawningPointsCount;
-     
         _angularStepInDeg = FULL_DEGREE_ANGLE / _positionsCount;
         _angularStepInRad = _angularStepInDeg * Mathf.Deg2Rad;
 
@@ -41,14 +33,11 @@ public class AngularSettingsProvider : MonoBehaviour
             var currentAngleSin = Mathf.Sin(currentAngleInRad);
 
             var currentAngleInDeg = _angularStepInDeg * i;
-            var rotation = Quaternion.Euler(0, 0, currentAngleInDeg);
-
-            _angularSettings.Add(new AngularUnit(currentAngleCos, currentAngleSin, rotation));
+            
+            _angularSettings.Add(new AngularUnit(currentAngleCos, currentAngleSin, currentAngleInDeg));
         }
+        
+        EventStreams.GameEvents.Publish(new AngularSettingsCalculatedEvent(_angularSettings));
     }
 
-    private void OnDestroy()
-    {
-        _subscriptions.Dispose();
-    }
 }
