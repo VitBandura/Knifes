@@ -16,7 +16,7 @@ public class GeneralRandomizer : MonoBehaviour
     private int _levelGoal;
     private int _woodDurability;
     private int _knifeCountUI;
-    private int _stuckKnivesCount;
+    private int _knivesInWoodCount;
     private int _circularSpawningPointsCount;
         
     private void Start()
@@ -26,7 +26,7 @@ public class GeneralRandomizer : MonoBehaviour
         GenerateCircularSpawningPointsCount();
         
         EventStreams.GameEvents.Publish(new RandomizerGeneratedValuesEvent(
-            _woodDurability, _knifeCountUI, _stuckKnivesCount, _circularSpawningPointsCount));
+            _woodDurability, _knifeCountUI, _knivesInWoodCount, _circularSpawningPointsCount));
     }
 
     private void GenerateLevelGoal()
@@ -38,7 +38,7 @@ public class GeneralRandomizer : MonoBehaviour
     
     private void GenerateStuckKnifeCount()
     {
-        _stuckKnivesCount = Random.Range(MAX_STUCK_KNIVES_COUNT, MIN_STUCK_KNIVES_COUNT);
+        _knivesInWoodCount = Random.Range(MAX_STUCK_KNIVES_COUNT, MIN_STUCK_KNIVES_COUNT);
     }
 
     private void GenerateCircularSpawningPointsCount()

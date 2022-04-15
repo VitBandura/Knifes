@@ -7,16 +7,16 @@ namespace Events
         public int WoodDurability { get; }
         public int KnifeCountUI { get; }
         
-        public int StuckKnivesCount { get; }
+        public int KnivesInWoodCount { get; }
         
         public int CircularSpawningPointsCount { get; }
 
         public RandomizerGeneratedValuesEvent(
-            int woodDurability, int knifeCountUI, int stuckKnivesCount, int circularSpawningPointsCount)
+            int woodDurability, int knifeCountUI, int knivesInWoodCount, int circularSpawningPointsCount)
         {
             WoodDurability = woodDurability;
             KnifeCountUI = knifeCountUI;
-            StuckKnivesCount = stuckKnivesCount;
+            KnivesInWoodCount = knivesInWoodCount;
             CircularSpawningPointsCount = circularSpawningPointsCount;
         }
     }

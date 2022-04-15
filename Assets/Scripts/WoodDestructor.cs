@@ -6,8 +6,8 @@ public class WoodDestructor : MonoBehaviour
 {
     private const float MAX_DESTROYED_PART_SPEED = 300;
     private const float MIN_DESTROYED_PART_SPEED = 150;
-    private const float MAX_DESTROYED_PART_TORQUE = 200;
-    private const float MIN_DESTROYED_PART_TORQUE = -200;
+    private const float MAX_DESTROYED_PART_TORQUE = 400;
+    private const float MIN_DESTROYED_PART_TORQUE = -400;
     
     private Rigidbody2D[] _partsOfTarget;
     private CompositeDisposable _subscriptions;
@@ -48,7 +48,6 @@ public class WoodDestructor : MonoBehaviour
    {
        _partsOfTarget = GetComponentsInChildren<Rigidbody2D>();
    }
-
    
    private void OnDestroy()
    {

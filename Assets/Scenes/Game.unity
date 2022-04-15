@@ -132,29 +132,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 25607593}
-  - component: {fileID: 25607592}
   m_Layer: 0
-  m_Name: CircularSpawner
+  m_Name: KnifeInWoodSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &25607592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25607591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea12fda5a2f95e447a1ac38c5e0453c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 1058294328790928973, guid: 083dc9a0c61e21a44bfc44b522030fd6, type: 3}
-  _knifeStuckPrefab: {fileID: 4609862212429208698, guid: 5d22a6f87b3d4424486d02129c1599a6, type: 3}
-  _parent: {fileID: 457684550}
 --- !u!4 &25607593
 Transform:
   m_ObjectHideFlags: 0

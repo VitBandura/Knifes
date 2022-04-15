@@ -24,7 +24,7 @@ public class StuckKnifeSpawner : MonoBehaviour
 
     private void SpawnStuckKnife(KnifeGetsIntoTargetEvent eventData)
     {
-        Instantiate(_stuckKnifePrefab, _spawnPoint, Quaternion.Euler(0,0,180), _parent);
+        Instantiate(_stuckKnifePrefab, _spawnPoint, Quaternion.identity, _parent);
     }
 
     private void OnDestroy()
