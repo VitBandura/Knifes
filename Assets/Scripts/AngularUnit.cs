@@ -1,5 +1,3 @@
-using UnityEngine;
-
     public class AngularUnit
     {
         public float Cos => _cos;

@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using Events;
 using SimpleEventBus.Disposables;
 using UnityEngine;
 
-public class WoodDestructor : MonoBehaviour
+public class AppleDestructor : MonoBehaviour
 {
     [SerializeField] private float _maxDestroyedPartSpeed = 300f;
     [SerializeField] private float _minDestroyedPartSpeed = 150f;
@@ -27,12 +29,13 @@ public class WoodDestructor : MonoBehaviour
     {
         _subscriptions = new CompositeDisposable
         {
-            EventStreams.GameEvents.Subscribe<TargetDestroyedEvent>(HandleWoodDestruction)
+            EventStreams.GameEvents.Subscribe<AppleDestroyedEvent>(HandleAppleDestruction)
         };
     }
     
-    private void HandleWoodDestruction(TargetDestroyedEvent eventData)
+    private void HandleAppleDestruction(AppleDestroyedEvent eventData)
     {
+        transform.position = eventData.Apple.transform.position;
         gameObject.SetActive(true);
     }
 
@@ -50,12 +53,12 @@ public class WoodDestructor : MonoBehaviour
     }
    
     private void GetAllPartsOfDestroyedTarget()
-   {
-       _parts = GetComponentsInChildren<Rigidbody2D>();
-   }
+    {
+        _parts = GetComponentsInChildren<Rigidbody2D>();
+    }
    
     private void OnDestroy()
-   {
-       _subscriptions.Dispose();
-   }
+    {
+        _subscriptions.Dispose();
+    }
 }
