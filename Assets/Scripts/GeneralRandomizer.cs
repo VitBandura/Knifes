@@ -4,12 +4,12 @@ using Random = UnityEngine.Random;
 
 public class GeneralRandomizer : MonoBehaviour
 {
-    private const int MAX_LEVEL_GOAL = 11;
-    private const int MIN_LEVEL_GOAL = 5;
+    private const float MAX_LEVEL_GOAL = 8f;
+    private const float MIN_LEVEL_GOAL = 4f;
     
-    private int _levelGoal;
-    private int _woodDurability;
-    private int _knifeCountUI;
+    private float _levelGoal;
+    private float _woodDurability;
+    private float _knifeCountUI;
    
     private void Start()
     {

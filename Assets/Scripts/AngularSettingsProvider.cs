@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AngularSettingsProvider : MonoBehaviour
 {
-    private const int FULL_DEGREE_ANGLE = 360;
+    private const float FULL_DEGREE_ANGLE = 360f;
    
     [SerializeField] private int _positionsCount;
     

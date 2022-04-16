@@ -8,6 +8,8 @@ public class KnifeThrower : MonoBehaviour
     [SerializeField] private KnifePool _knifePool;
     [SerializeField] private float _knifeSpeed;
     [SerializeField] private float _delayTime;
+
+    [SerializeField] private float _tempDelay; //temp
     
     private Rigidbody2D _knifeRigidBody2D;
     private CompositeDisposable _subscriptions;
@@ -81,7 +83,7 @@ public class KnifeThrower : MonoBehaviour
 
     private IEnumerator TestDelay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(_tempDelay);
         ThrowKnife();
     }
     

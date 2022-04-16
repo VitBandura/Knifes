@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WoodDestructor : MonoBehaviour
 {
-    private const float MAX_DESTROYED_PART_SPEED = 300;
-    private const float MIN_DESTROYED_PART_SPEED = 150;
-    private const float MAX_DESTROYED_PART_TORQUE = 400;
-    private const float MIN_DESTROYED_PART_TORQUE = -400;
+    private const float MAX_DESTROYED_PART_SPEED = 300f;
+    private const float MIN_DESTROYED_PART_SPEED = 150f;
+    private const float MAX_DESTROYED_PART_TORQUE = 400f;
+    private const float MIN_DESTROYED_PART_TORQUE = -400f;
     
     private Rigidbody2D[] _partsOfTarget;
     private CompositeDisposable _subscriptions;

@@ -18,7 +18,7 @@ public class Wood : MonoBehaviour
     {
         _circleCollider2D = GetComponent<CircleCollider2D>();
         
-        _particlesPositionOffset = new Vector3(0, _circleCollider2D.radius, 0);
+        _particlesPositionOffset = new Vector3(0, _circleCollider2D.radius);
         _particlesPosition = transform.position - _particlesPositionOffset;
         
         _particlesOfHarming = Instantiate(_particlePrefab);

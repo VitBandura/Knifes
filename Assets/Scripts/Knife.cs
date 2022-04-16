@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
-    private const int FULL_DEGREE_ANGLE = 360;
+    private const float FULL_DEGREE_ANGLE = 360f;
 
     [SerializeField] private float _tossAwaySpeed;
     [SerializeField] private float _tossAwayRotation;

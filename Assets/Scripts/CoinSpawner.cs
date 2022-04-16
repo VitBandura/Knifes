@@ -5,20 +5,19 @@ using Random = UnityEngine.Random;
 
 public class CoinSpawner : MonoBehaviour
 {
-    private const float ROTATION_OFFSET = -90;
-    
+    private const float MIN_CHANCE = 1f;
+    private const float MAX_CHANCE = 100f;
+    private const float ROTATION_OFFSET = -90f;
+
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _parent;
     [SerializeField] private CoinChanceSettings _coinChanceSettings;
 
-    private CircleCollider2D _circleCollider2D;
     private CompositeDisposable _subscriptions;
 
     private void Awake()
     {
-        _circleCollider2D = _coinPrefab.GetComponent<CircleCollider2D>();
-        
-        InitializeSubscriptions();
+      InitializeSubscriptions();
     }
 
     private void InitializeSubscriptions()
@@ -31,8 +30,7 @@ public class CoinSpawner : MonoBehaviour
 
     private bool ShouldSpawnCoin()
     {
-        float randomValue = Random.Range(1, 100);
-        return randomValue <= _coinChanceSettings.Chance;
+       return Random.Range(MIN_CHANCE, MAX_CHANCE) <= _coinChanceSettings.Chance;
     }
 
     private void SpawnCoins(AngularSettingsCalculatedEvent eventData)
@@ -42,21 +40,42 @@ public class CoinSpawner : MonoBehaviour
             return;
         }
         
-        var maxIndex = eventData.AngularSettings.Count;
-        var angleIndex = Random.Range(0, maxIndex);
-        var angularUnit = eventData.AngularSettings[angleIndex];
+        var angularUnit = GetAngularUnit(eventData);
+        var radius = CalculateRadius();
 
+        var coinPosition = SetCoinPosition(radius, angularUnit);
+
+        var coinRotation = Quaternion.Euler(0,0,angularUnit.Angle + ROTATION_OFFSET);
+
+        Instantiate(_coinPrefab, coinPosition, coinRotation, _parent);
+
+    }
+
+    private AngularUnit GetAngularUnit(AngularSettingsCalculatedEvent eventData)
+    {
+        var maxIndex = eventData.AngularSettings.Count;
+        var minIndex = 0;
+        var angleIndex = Random.Range(minIndex, maxIndex);
+        var angularUnit = eventData.AngularSettings[angleIndex];
+        eventData.AngularSettings.RemoveAt(angleIndex);
+        return angularUnit;
+    }
+
+    private float CalculateRadius()
+    {
+        var prefabCollider = _coinPrefab.GetComponent<CircleCollider2D>();
+        var parentCollider = _parent.GetComponent<CircleCollider2D>();
+        
+        return parentCollider.radius + prefabCollider.radius;
+    }
+
+    private Vector3 SetCoinPosition(float radius, AngularUnit angularUnit)
+    {
         var parentPosition = _parent.transform.position;
-        var radius = _parent.GetComponent<CircleCollider2D>().radius + _circleCollider2D.radius;
         var xPosition = radius * angularUnit.Cos + parentPosition.x;
         var yPosition = radius * angularUnit.Sin + parentPosition.y;
-        var position = new Vector3(xPosition, yPosition);
-            
-        var rotation = Quaternion.Euler(0,0,eventData.AngularSettings[angleIndex].Angle 
-                                            + ROTATION_OFFSET);
-
-        Instantiate(_coinPrefab, position, rotation, _parent);
-
+        
+        return new Vector3(xPosition, yPosition);
     }
 
     private void OnDestroy()

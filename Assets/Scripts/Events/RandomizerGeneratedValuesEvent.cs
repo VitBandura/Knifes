@@ -4,10 +4,10 @@ namespace Events
 {
     public class RandomizerGeneratedValuesEvent : EventBase
     {
-        public int WoodDurability { get; }
-        public int KnifeCountUI { get; }
+        public float WoodDurability { get; }
+        public float KnifeCountUI { get; }
         
-        public RandomizerGeneratedValuesEvent(int woodDurability, int knifeCountUI)
+        public RandomizerGeneratedValuesEvent(float woodDurability, float knifeCountUI)
         {
             WoodDurability = woodDurability;
             KnifeCountUI = knifeCountUI;

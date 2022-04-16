@@ -9,7 +9,7 @@ public class KnifeCounterUI : MonoBehaviour
     [SerializeField] private Color _usedKnifeIconColor;
 
     private CompositeDisposable _subscriptions;
-    private int _knifeCount;
+    private float _knifeCount;
     private int _knifeIconIndex;
     
     private void Awake()

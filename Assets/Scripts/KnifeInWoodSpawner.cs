@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class KnifeInWoodSpawner : MonoBehaviour
 {
-    private const int MAX_STUCK_KNIVES_COUNT = 4;
-    private const int MIN_STUCK_KNIVES_COUNT = 1;
-    private const float ROTATION_OFFSET = 90;
+    private const float MAX_STUCK_KNIVES_COUNT = 3f;
+    private const float MIN_STUCK_KNIVES_COUNT = 0.1f;
+    private const float ROTATION_OFFSET = 90f;
     
     [SerializeField] private GameObject _knifeStuckPrefab;
     [SerializeField] private Transform _parent;
 
     private CompositeDisposable _subscriptions;
-    private int _knivesInWoodCount;
-    private Vector3 _parentPosition;
-    private float _radius;
-
+    
     private void Awake()
     {
-        _radius = _parent.GetComponent<CircleCollider2D>().radius;
-        _parentPosition = _parent.transform.position;
         InitializeSubscriptions();
     }
 
@@ -31,29 +26,45 @@ public class KnifeInWoodSpawner : MonoBehaviour
         };
     }
     
-    private void GenerateStuckKnifeCount()
+    private float GenerateStuckKnivesCount()
     {
-        _knivesInWoodCount = Random.Range(MAX_STUCK_KNIVES_COUNT, MIN_STUCK_KNIVES_COUNT);
+       return Random.Range(MIN_STUCK_KNIVES_COUNT, MAX_STUCK_KNIVES_COUNT);
     }
+    
     private void SpawnKnivesInWood(AngularSettingsCalculatedEvent eventData)
     {
-        GenerateStuckKnifeCount();
-            
-        for (var i = 0; i < _knivesInWoodCount; i++)
+        var knivesCount= GenerateStuckKnivesCount();
+
+        for (var i = 0; i < knivesCount; i++)
         {
-            var maxIndex = eventData.AngularSettings.Count;
-            int angleIndex = Random.Range(0, maxIndex);
-            var angularUnit = eventData.AngularSettings[angleIndex];
+            var angularUnit = GetAngularUnit(eventData);
+            var radius = _parent.GetComponent<CircleCollider2D>().radius;
 
-            var xPosition = _radius * angularUnit.Cos + _parentPosition.x;
-            var yPosition = _radius * angularUnit.Sin + _parentPosition.y;
-            var position = new Vector3(xPosition, yPosition);
-            
-            var rotation = Quaternion.Euler(0,0,eventData.AngularSettings[angleIndex].Angle 
-                                                + ROTATION_OFFSET);
+            var knifePosition = SetKnifePositionInWood(radius, angularUnit);
 
-            Instantiate(_knifeStuckPrefab, position, rotation, _parent);
+            var knifeRotation = Quaternion.Euler(0,0,angularUnit.Angle + ROTATION_OFFSET);
+
+            Instantiate(_knifeStuckPrefab, knifePosition, knifeRotation, _parent);
         }
+    }
+
+    private AngularUnit GetAngularUnit(AngularSettingsCalculatedEvent eventData)
+    {
+        var maxIndex = eventData.AngularSettings.Count;
+        var minIndex = 0;
+        var angleIndex = Random.Range(minIndex, maxIndex);
+        var angularUnit = eventData.AngularSettings[angleIndex];
+        eventData.AngularSettings.RemoveAt(angleIndex);
+        return angularUnit;
+    }
+
+    private Vector3 SetKnifePositionInWood(float radius, AngularUnit angularUnit)
+    {
+        var parentPosition = _parent.transform.position;
+        var xPosition = radius * angularUnit.Cos + parentPosition.x;
+        var yPosition = radius * angularUnit.Sin + parentPosition.y;
+        var knifePosition = new Vector3(xPosition, yPosition);
+        return knifePosition;
     }
 
     private void OnDestroy()
