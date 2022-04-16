@@ -459,6 +459,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &877600415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 877600417}
+  - component: {fileID: 877600416}
+  m_Layer: 0
+  m_Name: CoinSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &877600416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877600415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdfa842cd4e7a34ca5fa4c71f58587d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinPrefab: {fileID: 1058294328790928973, guid: 083dc9a0c61e21a44bfc44b522030fd6, type: 3}
+  _parent: {fileID: 457684550}
+  _coinChanceSettings: {fileID: 11400000, guid: f1a1f82d072292c46a2e1430f1d9a1a6, type: 2}
+--- !u!4 &877600417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877600415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.3, y: -1.29, z: -0.005343895}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &906311489
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +1024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495529037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.78, y: -2.07, z: -0.05326568}
+  m_LocalPosition: {x: -5.31, y: -0.31, z: -0.05326568}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1261,6 +1308,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3559583650656572243, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559583650656572243, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
+      propertyPath: _rotationModes.Array.data[0]._speed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3613329521865902075, guid: 0e301e5c31ec0094e874c918d7b629b1, type: 3}
       propertyPath: m_ConnectedRigidBody
       value: 
@@ -1329,10 +1384,10 @@ PrefabInstance:
     - target: {fileID: 3771683981922976475, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3771683981922976475, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}
       propertyPath: m_Name
-      value: GameController
+      value: GeneralRandomizer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a10e375ef1306694e951cf69f78fbaf7, type: 3}

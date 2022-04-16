@@ -24,7 +24,8 @@ public class KnifeThrower : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ThrowKnife();
+            StartCoroutine(TestDelay());
+            //ThrowKnife();
         }
     }
     
@@ -76,6 +77,12 @@ public class KnifeThrower : MonoBehaviour
     private void HandleTargetDestruction(TargetDestroyedEvent eventData)
     {
         _isTargetDestroyed = true;
+    }
+
+    private IEnumerator TestDelay()
+    {
+        yield return new WaitForSeconds(1);
+        ThrowKnife();
     }
     
     private void OnDestroy()
