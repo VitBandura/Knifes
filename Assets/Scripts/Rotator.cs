@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class NewRotator : MonoBehaviour
+public class Rotator : MonoBehaviour
 {
     [SerializeField] private float _accelerationTime;
     [SerializeField] private float _speed;
